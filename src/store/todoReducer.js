@@ -11,6 +11,13 @@ const todoReducer = (state = [], action ) => {
       ...state.slice(0, action.payload),
       ...state.slice(action.payload + 1)
     ]
+    case "Edit_Todo":
+    let index = action.payload.index;
+    return [
+      ...state.slice(0, index),
+      {...state[index], text: action.payload.text},
+      ...state.slice(index+1)
+    ]
     default: 
     return state;
   }

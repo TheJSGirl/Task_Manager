@@ -5,19 +5,19 @@ import TodoItem  from '../components/TodoItem';
 class App extends Component {
 
 
-  // deleteItem = (e) => {
-  //   e.preventDefault();
-  //   this.props.deleteTodo({
+  deleteItem = (e) => {
+    e.preventDefault();
+    this.props.deleteTodo({
       
-  //   })
-  // }
+    })
+  }
   render() {
-    const{addTodo, deleteTodo} = this.props;
+    const{addTodo, deleteTodo,editTodo} = this.props;
     return (
       <div className="App">
         <header className="App-header">
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <h1 className="App-title center">Task Manager</h1>
+          <h1 className="App-title center pink-text text-darken-2" >Task Manager</h1>
         </header>
         
         <div>
@@ -27,7 +27,7 @@ class App extends Component {
             {
               this.props.todos.map((todo, index) => {
                 return (
-                  <TodoItem todo={todo} deleteTodo={deleteTodo} key={index} index={index}/>
+                  <TodoItem todo={todo} deleteTodo={deleteTodo} editTodo= {editTodo} key={index} index={index}/>
                 )
               })
             }
@@ -59,6 +59,15 @@ const mapDistpatchToProps = (dispatch) => {
       dispatch({
         type: 'Delete_Todo',
         payload: index
+      })
+    },
+    editTodo: (text, index) => {
+      dispatch({
+        type: 'Edit_Todo',
+        payload:{
+          text,
+          index
+        }
       })
     }
   }

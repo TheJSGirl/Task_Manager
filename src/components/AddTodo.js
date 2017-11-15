@@ -15,7 +15,7 @@ class AddTodo extends React.Component{
       <div>
         <form onSubmit= {this.addItemToStore}>
           <input type = "text" ref = "addtodo" />
-          <button type = "submit" className="btn waves-effect waves-light btn-large   pink darken-3" >AddTodo</button>          
+          <button type = "submit" className="btn waves-effect waves-light btn-large pink darken-3" >AddTodo</button>          
         </form>
       </div>
     )
